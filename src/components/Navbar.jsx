@@ -1,11 +1,30 @@
 import React from 'react'
 import TextField from "@mui/material/TextField";
 import SettingsIcon from '@mui/icons-material/Settings';
+import { useLocation } from "react-router-dom";
 const Navbar = () => {
+  const location = useLocation();
+const pathname = location.pathname;
+const getTitle = () => {
+  switch (pathname) {
+    case "/":
+      return "Dashboard";
+    case "/notifications":
+      return "Notifications";
+    case "/userprofile":
+      return "User Profile";
+    case "/icons":
+      return "Icons";
+    case "/maps":
+      return "Maps";
+    default:
+      return "Dashboard";
+  }
+};
   return (
     <div className=' text-black flex items-center px-4 justify-between w-[100%]'>
         <div>
-        <h1 className='text-xl font-lg'>Dashboard</h1>
+        <h1 className='text-xl font-lg'>{getTitle()}</h1>
 
         </div>
         <div className='flex items-center gap-2'>
